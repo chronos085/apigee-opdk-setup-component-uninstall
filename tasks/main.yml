@@ -1,0 +1,24 @@
+---
+- name: Stop Apigee Service {{ apigee_service }}
+  command: '/opt/apigee/apigee-service/bin/apigee-service {{ apigee_service }} stop'
+  
+- name: Uninstall Apigee Service {{ apigee_service }}
+  command: '/opt/apigee/apigee-service/bin/apigee-service {{ apigee_service }} uninstall'
+  
+- name: Clear the yum cache
+  command: 'sudo yum clean all'
+  
+- name: Remove all the Apigee RPMs
+  command: 'sudo rpm -e $(rpm -qa | egrep "(apigee-|edge-)")'
+
+- name: Remove the installation root directory
+  become: yes
+  file:
+    path: /opt/apigee
+    state: absent
+
+- name: Remove the Nginx directory
+  become: yes
+  file:
+    path: /opt/nginx
+    state: absent
