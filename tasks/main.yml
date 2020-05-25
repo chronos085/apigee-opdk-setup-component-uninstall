@@ -1,9 +1,9 @@
 ---
-- name: Stop Apigee Service {{ apigee_service }}
-  command: '/opt/apigee/apigee-service/bin/apigee-service {{ apigee_service }} stop'
+- name: Stop Apigee Service
+  command: '/opt/apigee/apigee-service/bin/apigee-all stop'
   
-- name: Uninstall Apigee Service {{ apigee_service }}
-  command: '/opt/apigee/apigee-service/bin/apigee-service {{ apigee_service }} uninstall'
+- name: Uninstall Apigee Service
+  command: '/opt/apigee/apigee-service/bin/apigee-service apigee-service uninstall'
   
 - name: Clear the yum cache
   command: 'sudo yum clean all'
