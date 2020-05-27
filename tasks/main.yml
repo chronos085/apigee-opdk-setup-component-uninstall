@@ -6,10 +6,10 @@
   command: 'removes=/opt/apigee/apigee-service /opt/apigee/apigee-service/bin/apigee-service apigee-service uninstall'
   
 - name: Clear the yum cache
-  command: 'sudo yum clean all'
+  shell: sudo yum clean all
   
 - name: Remove all the Apigee RPMs
-  command: 'sudo rpm -e $(rpm -qa | egrep "(apigee-|edge-)")'
+  shell: sudo rpm -e $(rpm -qa | egrep "(apigee-|edge-)")
 
 - name: Remove the installation root directory
   become: yes
