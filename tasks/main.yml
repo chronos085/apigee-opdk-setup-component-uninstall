@@ -22,3 +22,8 @@
   file:
     path: /opt/nginx
     state: absent
+
+- name: Reboot the machine with all defaults
+  reboot:
+  
+- ping:
